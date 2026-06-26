@@ -53,6 +53,8 @@ services:
       postgres: { condition: service_healthy }
       redis: { condition: service_healthy }
       minio: { condition: service_healthy }
+    volumes:
+      - rcloneconfig:/root/.config/rclone   # token Drive cho backup, giữ qua rebuild
     networks: [internal]
 
   frontend:
@@ -78,6 +80,7 @@ volumes:
   pgdata:
   redisdata:
   miniodata:
+  rcloneconfig:
 
 networks:
   internal:
