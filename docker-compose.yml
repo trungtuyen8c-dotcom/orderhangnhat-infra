@@ -55,6 +55,7 @@ services:
       minio: { condition: service_healthy }
     volumes:
       - rcloneconfig:/root/.config/rclone   # token Drive cho backup, giữ qua rebuild
+      - ./:/infra-snapshot:ro               # .env + compose -> backup config
     networks: [internal]
 
   frontend:
